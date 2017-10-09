@@ -1,0 +1,129 @@
+***********************
+》》》》》》》》》》》》北鼎
+1,7 9-18
+10-1到10-4号休息，没有人上班，5-8号是正常上班
+
+***********************
+》》》》》》》》》》》》移联
+6,7 9-12,13:30-18:00
+1,5 9-20
+9.30周六为正常工作日，麻烦将这天的电话进线时间调整为9:00——20:00，这天工作时间结束后，请将周六电话进线时间恢复为：9:00——12:00，13:30——18:00。谢谢！    我司国庆放假时间为10.1——10.8，所以这八天都采用节假日的值班时间。由于10.2、10.3、10.4、10.5、10.6这几天为周一到周五，所以需要调整电话接入的时间，请将这五天的电话进线时间调整为节假日值班的时间：9:00——12:00，13:30——18:00。谢谢！
+10.9周一，恢复正常上班工作时间，麻烦把周一到周五正常工作日的电话进线时间调整恢复为
+
+***********************
+》》》》》》》》》》》》乙辰
+1,5 9-21:30
+6,7 9-12,13-18
+10.1-10.2   这两天公司这边停电，无法上班。   3-8号   是早上9:00-下午18:0，3-8号    中午12:00-13:00是休息时间，和平时周六日一样
+
+*************************
+》》》》》》》》》》》》中游
+1,7 8:30-22
+
+*************************
+》》》》》》》》》》》》汇联
+国庆8天不上班
+亲爱的小主，感谢您的来访！人工服务时间为：周一至周五 9：00—20：30分；周六至周日09：00—17：30分，国家法定节假日休息，无人工服务。请回复提示数字后，将启动机器人为您服务，再输入问题关键字，机器人立即为您解答。如有紧急问题，请留下姓名及电话，客服上班后第一时间联系您处理。感谢您的支持与理解，祝您节日快乐！
+<process maxnum="944">
+  <task id="task0" name="开始节点" nodeType="START_NODE" nodeImg="assets/img/tb_06.png" content="" control="" x="332" y="11">
+    <line id="line380" name="line380" from="task0" fromIndex="2" to="task375" toIndex="0" points=""/>
+  </task>
+  <task id="task33" name="坐席状态节点测试" nodeType="JUDE_STAFFSTATUS_NODE" nodeImg="assets/task.png" content="" control="{$PROPERTY|servVipKfid$}:OnlineState:Overflow" x="337" y="220">
+    <line id="line52" name="line52" from="task33" fromIndex="2" to="task47" toIndex="0" points=""/>
+  </task>
+  <task id="task47" name="判断节点" nodeType="JUDGE_NODE" nodeImg="assets/img/tb_11.png" content="" control="OnlineState==1-}line68:OnlineState==2-}line68:OnlineState==3-}line68:OnlineState==4-}line68:line374" x="337" y="301">
+    <line id="line68" name="line68" from="task47" fromIndex="2" to="task63" toIndex="0" points=""/>
+    <line id="line374" name="line374" from="task47" fromIndex="1" to="task144" toIndex="3" points=""/>
+  </task>
+  <task id="task63" name="指定坐席" nodeType="MANSERVICE_SWITCH_NODE" nodeImg="assets/img/tb_25.png" content="" control="0:{$PROPERTY|servVipKfid$}:路由切换失败，请{$RETURN|IMR|返回$}:非人工服务时间请{$TRANSITION|line658$}:黑名单用户请{$RETURN|IMR|返回$}:人工服务下线请{$RETURN|IMR|返回$}:人工服务忙请{$RETURN|IMR|返回$}:请按提示输入{$RETURN|IMR|返回$}::false" x="339" y="390"/>
+  <task id="task144" name="人工服务" nodeType="MANSERVICE_SWITCH_NODE" nodeImg="assets/img/tb_25.png" content="" control="782:0:路由切换失败，请{$RETURN|IMR|返回$}:亲爱的小主，感谢您的来访，人工服务时间为：周一至周五 9：00—20：30分；周六至周日09：00—17：30分。回复提示数字{$TRANSITION|line726$}，再输入问题关键字，机器人立即为您解答。如有紧急问题，请回复数字{$TRANSITION|line412$}，客服上班后第一时间联系您处理。祝您工作顺利，生活愉快！:黑名单用户请{$RETURN|IMR|返回$}:人工服务下线请{$RETURN|IMR|返回$}:人工服务忙请{$RETURN|IMR|返回$}:请按提示输入{$RETURN|IMR|返回$}:line726" x="518" y="302">
+    <line id="line412" name="line412" from="task144" fromIndex="1" to="task407" toIndex="3" points=""/>
+    <line id="line726" name="line726" from="task144" fromIndex="1" to="task721" toIndex="3" points=""/>
+  </task>
+  <task id="task375" name="判断节点" nodeType="JUDGE_NODE" nodeImg="assets/img/tb_11.png" content="" control="strlen(servVipKfid)}0-}line381:line382" x="335" y="116">
+    <line id="line381" name="line381" from="task375" fromIndex="2" to="task33" toIndex="0" points=""/>
+    <line id="line382" name="line382" from="task375" fromIndex="1" to="task144" toIndex="0" points=""/>
+  </task>
+  <task id="task407" name="，留下您的姓名及电话" nodeType="IMR_SWITCH_NODE" nodeImg="assets/img/tb_22.png" content="" control="4:" x="697" y="304"/>
+  <task id="task721" name="，将启动机器人为您服务" nodeType="PROCESS_SWITCH_NODE" nodeImg="assets/img/tb_34.png" content="已启动机器人小嘻为您服务，请回复问题关键字。" control="a4417:a10832:" x="683" y="392"/>
+</process>
+
+
+
+*************************
+》》》》》》》》》》》》标准院
+1,7 9-12,14-17:30
+国庆8天不上班
+
+*************************
+》》》》》》》》》》》》三态物流
+1,7 9-19
+6号要确保电话能接能打
+互联网事业部-谢鸿明(2575038905)  11:32:36
+1-5，7-8这几号都不进电话吗？
+
+************************
+》》》》》》》》》》》》斯坦德
+1,7 9-18
+400电话会转接到手机号上
+
+************************
+》》》》》》》》》》》》三代人
+1,6 9-18
+国庆8天不上班
+
+************************
+》》》》》》》》》》》》医点
+1,5 9:30-18:00
+国庆按周末语音播放
+400设置了导航
+
+************************
+>>>>>>>>>>>>>>>>>>>>>>>>天创
+600
+1,5 9-12,13:30-20
+6,7 9-12,13:30-18
+timebetween(now(),"00:00:01","09:00:00")|| timebetween(now(),"12:00:01","13:30:00")||(timebetween(now(),"20:00:00","23:59:59"))||((datetimediff("d",now(),"2012-12-02")% 7 == 0 || datetimediff("d",now(),"2012-12-02") % 7 == 6 )&&timebetween(now(),"18:00:00","23:59:59"))
+500
+1,7 9-12,13:30-18
+Exp=timebetween(now(),"00:00:01","09:00:00")|| timebetween(now(),"12:00:01","13:30:00")||timebetween(now(),"18:00:00","23:59:59")
+国庆9-12,13:30-18
+
+************************
+>>>>>>>>>>>>>>>>>>>>分享吧
+1,6 9-18
+(datetimediff("d",now(),"2012-12-02") % 7 == 0 ) || (timebetween(now(),"00:00:01","09:00:00")) || (timebetween(now(),"18:00:00","23:59:59"))
+国庆8天都要上班
+
+************************
+上海分销
+Exp=(((datetimediff("d",now(),"2012-12-02") % 7 == 6 ) || (datetimediff("d",now(),"2012-12-02") % 7 == 0 ) )  )  ||  (timebetween(now(),"00:00:01","09:00:00") ||timebetween(now(),"18:00:00","23:59:59"))
+1,5 9:30-18
+
+************************
+上海百明
+1,5 9-12,13:30-20
+6,7 9-12,13:30-18
+没配置导航
+
+***********************
+萨摩耶
+1,5 9-12,13:30-20
+6,7 9-12,13:30-18
+
+***********************
+思萨
+1,5 9-21
+6,7 9-18
+国庆转接到13316905210
+没有时间限制
+
+***********************
+前海爱健康
+
+***********************
+昆山飞瑞
+7*24
+
+***********************
+天津润林
